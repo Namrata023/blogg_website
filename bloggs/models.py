@@ -10,9 +10,7 @@ class User(AbstractUser):
     profile_picture = models.ImageField(upload_to='profile_pictures/', blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add = True)
     is_author = models.BooleanField(default=False)
-    groups = models.ManyToManyField('auth.Group', related_name='bloggs_user_set', blank=True)
-    user_permissions = models.ManyToManyField('auth.Permission', related_name='bloggs_user_permissions_set', blank=True)
-
+   
     def __str__(self):
         return self.username
     
@@ -30,7 +28,7 @@ post_status_choices = [
         ('Archived', 'Archived'),
         ('Pending', 'Pending'),
 ]
-class BlogPost(models.Model):
+class Article(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField()
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='blog_posts')
@@ -45,7 +43,7 @@ class BlogPost(models.Model):
 class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_comments")
     content = models.TextField()
-    blog_post = models.ForeignKey(BlogPost, on_delete=models.CASCADE, related_name='comments')
+    blog_post = models.ForeignKey(Article, on_delete=models.CASCADE, related_name='comments')
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='author_comments')
     created_at = models.DateTimeField(auto_now_add = True)
 
@@ -54,7 +52,7 @@ class Comment(models.Model):
 
 class Like(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_likes")
-    blog_post = models.ForeignKey(BlogPost, on_delete=models.CASCADE, related_name='author_likes')
+    blog_post = models.ForeignKey(Article, on_delete=models.CASCADE, related_name='author_likes')
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='likes')
     created_at = models.DateTimeField(auto_now_add = True)
 
