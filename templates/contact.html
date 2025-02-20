@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact - Blogger's Haven{% endblock %}
+
+{% block content %}
+<div class="container mt-5 pt-5">
+    <h2 class="text-center fw-bold text-primary mb-4">📩 Contact <span class="text-warning">Blogger's Haven</span></h2>
+    <p class="text-center text-muted lead">
+        Have questions, suggestions, or just want to say hello? Reach out to us!
+    </p>
+
+    
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0 p-4 rounded-4 bg-light">
+                <h4 class="fw-bold text-dark">💬 Send Us a Message</h4>
+                <form method="post" action="{% url 'feedback_create' %}">
+                    {% csrf_token %}
+                    {% if request.user.is_authenticated %}
+                    <div class="mb-3">
+                        <label for="name" class="form-label fw-semibold">Name:</label>
+                        <input type="text" class="form-control rounded-3" id="name" name="name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label fw-semibold">Email:</label>
+                        <input type="email" class="form-control rounded-3" id="email" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="message" class="form-label fw-semibold">Message:</label>
+                        <textarea class="form-control rounded-3" id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100 fw-semibold">📨 Send Message</button>
+                    {% else %}
+                        <p class="text-center text-danger fw-semibold">Please log in to send a message.</p>
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="row justify-content-center my-5">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0 p-4 rounded-4 bg-light">
+                <h3 class="fw-bold text-dark text-center">❓ Frequently Asked Questions</h3>
+                <div class="accordion mt-3" id="faqAccordion">
+                    {% for faq in faqs %}
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading{{ forloop.counter }}">
+                            <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ forloop.counter }}" aria-expanded="false">
+                                {{ faq.question }}
+                            </button>
+                        </h2>
+                        <div id="collapse{{ forloop.counter }}" class="accordion-collapse collapse" aria-labelledby="heading{{ forloop.counter }}" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted">
+                                {{ faq.answer }}
+                            </div>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <p class="text-center text-muted">No FAQs available at the moment.</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="row justify-content-center my-5">
+        <div class="col-md-8 text-center">
+            <h3 class="fw-bold text-dark">🌐 Connect With Us</h3>
+            <p class="text-muted">Follow us on social media for the latest updates and community discussions.</p>
+            <div class="d-flex justify-content-center gap-4">
+                <a href="https://www.facebook.com/login" target="_blank"><p>Facebook</p></a>
+                {% comment %} <img src="{% static 'images/facebook.png' %}" alt="Instagram" width="30"> {% endcomment %}
+                <a href="https://www.instagram.com/accounts/login" target="_blank"><p>Instagram</p></a>
+                <a href="https://x.com/login" target="_blank"><p>Twitter</p></a>
+                <a href="https://www.linkedin.com/login" target="_blank"><p>LinkedIn</p></a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

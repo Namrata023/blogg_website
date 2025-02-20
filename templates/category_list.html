@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Categories {% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center fw-bold mb-4">Explore Categories</h2>
+    
+    {% if categories %}
+        <div class="row justify-content-center">
+            {% for category in categories %}
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card border-0 shadow-lg rounded-3 h-100">
+                        <div class="card-body text-center">
+                            <h5 class="card-title fw-semibold text-primary">{{ category.name }}</h5>
+                            <p class="card-text text-muted">{{ category.description|truncatewords:15 }}</p>
+                            <a href="{% url 'category_articles' slug=category.slug %}" class="btn btn-outline-primary w-100">View Articles</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="text-center text-muted">No categories available at the moment.</p>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}Blogs - Blogger's Haven{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5 pt-5"> 
+
+  {% if user.is_authenticated and user.is_author %}
+    <div class="row justify-content-center mb-4">
+      <div class="col-md-6 text-center">
+        <a href="{% url 'create_article' %}" class="btn btn-success btn-lg fw-bold">Create Article</a>
+      </div>
+    </div>
+  {% else %}
+    <div class="row justify-content-center mb-4">
+      <div class="col-md-6 text-center">
+        <p class="text-muted">You need to be an author to create new articles.</p>
+      </div>
+    </div>
+  {% endif %}
+
+  <div class="text-center mb-5">
+    <h1 class="fw-bold text-primary">Our Latest Blogs</h1>
+  </div>
+
+  <div class="row">
+    {% for article in articles %}
+      <div class="col-md-4 mb-4">
+        <div class="card shadow border-0 rounded">
+          {% if article.image %}
+            <img src="{{ article.image.url }}" class="card-img-top" alt="{{ article.title }}"> 
+          {% endif %}
+          <div class="card-body">
+            <h5 class="card-title fw-bold">{{ article.title }}</h5>
+            <p>Author:{{ article.author }}</p>
+            <p>Published:{{ article.created_at|date:"F d, Y" }}</p>
+            <p class="card-text text-muted">{{ article.excerpt }}</p>
+            <a href="{% url 'article_detail' article.id article.slug %}" class="btn btn-primary w-100 fw-semibold">Read More</a>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <div class="col-12">
+        <p class="text-center text-muted">No articles available at the moment.</p>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

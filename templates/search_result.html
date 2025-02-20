@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}Search Results - Blogger's Haven{% endblock %}
+
+{% block content %}
+<div class="container mt-5 pt-5">
+    <div class="text-center mb-4">
+        <h1 class="fw-bold text-primary">Search Results</h1>
+    </div>
+
+    {% if articles %}
+        <div class="row">
+            {% for article in articles %}
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow border-0 rounded">
+                        {% if article.image %}
+                            <img src="{{ article.image.url }}" class="card-img-top" alt="{{ article.title }}">
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">{{ article.title }}</h5>
+                            <p class="card-text text-muted">{{ article.excerpt }}</p>
+                            <a href="{% url 'article_detail' article.id article.slug %}" class="btn btn-primary w-100 fw-semibold">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="text-center">
+            <p class="text-muted">No results found for your search query.</p>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

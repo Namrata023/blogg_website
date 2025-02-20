@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Confirm Deletion - {{ article.title }}{% endblock %}
+
+{% block content %}
+<div class="container mt-5 pt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow border-0 p-4 rounded">
+        <h1 class="text-center text-danger fw-bold mb-4">Confirm Deletion</h1>
+        <p class="text-center lead">Are you sure you want to delete the article:</p>
+        <h3 class="text-center fw-bold mb-3">{{ article.title }}</h3>
+        <p class="text-center text-muted mb-4">Once deleted, this action cannot be undone.</p>
+        <div class="text-center">
+         
+          
+          <form method="post" class="d-inline">
+            {% csrf_token %}
+            <button type="submit" name="confirm_delete" class="btn btn-danger btn-lg me-2">
+              Yes, Delete Article
+            </button>
+          </form>
+          
+          <form method="post" class="d-inline">
+            {% csrf_token %}
+            <button type="submit" name="cancel_delete" class="btn btn-secondary btn-lg">
+              Cancel
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
