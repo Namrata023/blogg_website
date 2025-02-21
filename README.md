@@ -5,7 +5,7 @@
 
 Blogger’s Haven is a platform aiming to simplify blogging for individuals and businesses.The platform's mission is to enable content creators to write, manage, and share their blogs effortlessly while engaging with their audience through comments and likes.
 ## Screenshots 
-Home page:![alt text](<Screenshot (67).png>)
+Home page:![alt text](<Screenshot (76).png>)
 
 
 
@@ -49,6 +49,7 @@ python -m venv .venv
 - Step 3: Install Dependencies
 ```
 pip install -r requirements.txt
+
 ```
 - Step 4: Set Up Environment Variables
 Create a .env file in the project root and add necessary configurations:
@@ -58,6 +59,7 @@ DEBUG=True
 ```
 - Step 5: Apply Database Migrations
 ```
+python manage.py makemigrations
 python manage.py migrate
 ```
 - Step 6: Create a Superuser
