@@ -74,3 +74,5 @@ python manage.py runserver
 
 ## Status
 Project is Done
+## Contact
+Created by https://www.linkedin.com/in/namrata-adhikari-04a117324/ - feel free to contact me!
