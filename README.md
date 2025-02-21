@@ -42,7 +42,7 @@ Home page:![alt text](<Screenshot (76).png>)
 Open a terminal or command prompt and run:
 ```bash
 git clone https://github.com/Namrata023/blogg_website.git
-cd bloggers-haven
+cd bloggers_haven
  
 ```
 - Step 2: Set Up a Virtual Environment
