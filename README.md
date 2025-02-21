@@ -31,6 +31,11 @@ Home page:![alt text](<Screenshot (76).png>)
 - Backend:Django (Python) 
 - Database: SQLite
 
+
+## Resources
+- [Building a Blog Application with Django](https://djangocentral.com/building-a-blog-application-with-django/)
+
+
 ## Setup/Installation
 
 - Step 1: Clone The Repository
