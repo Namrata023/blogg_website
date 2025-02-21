@@ -4,9 +4,12 @@
 ## Description
 
 Blogger’s Haven is a platform aiming to simplify blogging for individuals and businesses.The platform's mission is to enable content creators to write, manage, and share their blogs effortlessly while engaging with their audience through comments and likes.
-## Screenshots
+## Screenshots 
+Home page:![alt text](<Screenshot (67).png>)
+Blog page:[alt text](<Screenshot (72).png>)
 
-![Blog Screenshot](https://raw.githubusercontent.com/Namrata023/blogg_website/main/Screenshot%20(67).png)
+
+
 
 
 
@@ -66,3 +69,6 @@ python manage.py createsuperuser
 python manage.py runserver
 ```
 
+
+## Status
+Project is Done
