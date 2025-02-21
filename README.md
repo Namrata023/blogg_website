@@ -6,7 +6,7 @@
 Blogger’s Haven is a platform aiming to simplify blogging for individuals and businesses.The platform's mission is to enable content creators to write, manage, and share their blogs effortlessly while engaging with their audience through comments and likes.
 ## Screenshots 
 Home page:![alt text](<Screenshot (67).png>)
-Blog page:[alt text](<Screenshot (72).png>)
+
 
 
 
