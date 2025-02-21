@@ -10,8 +10,8 @@ class ArticleForm(forms.ModelForm):
     
     def save(self, commit=True):
         article = super().save(commit=False)
-        if not article.slug:  # Auto-generate the slug if not provided
-            article.slug = article.title.lower().replace(" ", "-")  # Simple slugify logic
+        if not article.slug: 
+            article.slug = article.title.lower().replace(" ", "-")  
         if commit:
             article.save()
         return article

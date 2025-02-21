@@ -33,10 +33,15 @@
             </div>
         </div>
     </div>
-
+    <br>
+    {% if request.user.is_authenticated %}
     <div class="text-center mt-4">
         <p class="text-muted">Still have questions?</p>
         <a href="{% url 'feedback_create' %}" class="btn btn-primary fw-semibold">📩 Contact Us</a>
     </div>
+    {% else %}
+    <p class="text-center text-danger fw-semibold">You must be logged in contact.</p>
+  {% endif %}
+    
 </div>
 {% endblock %}

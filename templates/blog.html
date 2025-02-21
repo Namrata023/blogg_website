@@ -4,7 +4,7 @@
 
 {% block content %}
 
-<div class="container mt-5 "> 
+<div class="container mt-5 pt-5 "> 
 
   {% if user.is_authenticated and user.is_author %}
     <div class="row justify-content-center mb-4">
@@ -15,7 +15,7 @@
   {% else %}
     <div class="row justify-content-center mb-4">
       <div class="col-md-6 text-center">
-        <p class="text-muted">You need to be an author to create new articles.</p>
+        <p class="text-center text-danger fw-semibold">You need to be an author to create new articles.</p>
       </div>
     </div>
   {% endif %}
@@ -32,10 +32,10 @@
             <img src="{{ article.image.url }}" class="card-img-top" alt="{{ article.title }}"> 
           {% endif %}
           <div class="card-body">
-            <h5 class="card-title fw-bold">{{ article.title }}</h5>
-            <p>Author:{{ article.author }}</p>
-            <p>Category:{{ article.category }}</p>
-            <p>Published:{{ article.created_at|date:"F d, Y" }}</p>
+            <h5 class="card-title fw-bold text-dark">{{ article.title }}</h5>
+            <p class=" text-dark">Author:{{ article.author }}</p>
+            <p class=" text-dark">Category:{{ article.category }}</p>
+            <p class="text-dark">Published:{{ article.created_at|date:"F d, Y" }}</p>
             <p class="card-text text-muted">{{ article.excerpt }}</p>
             <a href="{% url 'article_detail' article.id article.slug %}" class="btn btn-primary w-100 fw-semibold">Read More</a>
           </div>

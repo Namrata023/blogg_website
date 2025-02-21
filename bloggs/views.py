@@ -118,9 +118,9 @@ def delete_article(request,slug):
     if request.method == 'POST':
         if 'confirm_delete' in request.POST:
             article.delete()
-            return redirect('home')  # Redirect to homepage after deletion
+            return redirect('home')  
         elif 'cancel_delete' in request.POST:
-            return redirect('article_detail', id=article.id, slug=slug)  # Redirect back to the article detail page
+            return redirect('article_detail', id=article.id, slug=slug)  
 
     return render(request, 'delete_article.html', {'article': article})
 
@@ -189,6 +189,7 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return redirect('home')
+
 
 def faq_list(request):
     faqs = FAQ.objects.all()
