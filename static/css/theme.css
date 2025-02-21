@@ -1,12 +1,12 @@
 
 :root {
-    --primary-color: #6C5B7B; /* Soft Mauve */
-    --secondary-color: #F8BBD0; /* Light Pink */
-    --background-color: #F7F7F7; /* Light Gray */
-    --text-color: #2D3436; /* Dark Gray */
-    --accent-color: #F5A623; /* Warm Yellow */
-    --button-bg: #6C5B7B; /* Button Color */
-    --button-hover: #B39DDB; /* Hover Color */
+    --primary-color: #6C5B7B; 
+    --secondary-color: #F8BBD0; 
+    --background-color: #F7F7F7; 
+    --text-color: #2D3436; 
+    --accent-color: #F5A623; 
+    --button-bg: #6C5B7B; 
+    --button-hover: #B39DDB; 
 }
 
 
@@ -19,23 +19,23 @@ body {
 
 
 .navbar-light {
-    background-color: var(--primary-color); /* Soft Mauve background */
+    background-color: var(--primary-color); 
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     padding: 10px 0;
 }
 
 
 .navbar-light .navbar-brand {
-    font-family: 'Playfair Display', serif; /* Elegant font for brand name */
-    font-weight: 700; /* Bold font for prominence */
+    font-family: 'Playfair Display', serif; 
+    font-weight: 700; 
     color: white;
-    font-size: 2rem; /* Adjust size as needed */
-    letter-spacing: 2px; /* Slight letter spacing for a stylish look */
+    font-size: 2rem; 
+    letter-spacing: 2px; 
     transition: color 0.3s ease;
 }
 
 .navbar-light .navbar-brand:hover {
-    color: var(--accent-color); /* Accent color on hover */
+    color: var(--accent-color); 
     text-decoration: none;
 }
 
@@ -45,17 +45,17 @@ body {
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     padding: 12px 20px;
-    font-size: 1.1rem; /* Adjust font size */
+    font-size: 1.1rem; 
     transition: color 0.3s ease;
 }
 
 .navbar-light .navbar-nav .nav-link:hover {
-    color: var(--accent-color); /* Accent color on hover */
+    color: var(--accent-color); 
 }
 
 /* Active Link */
 .navbar-light .navbar-nav .nav-link.active {
-    color: var(--accent-color); /* Color of the active link */
+    color: var(--accent-color); 
 }
 
 

@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // Smooth scrolling for anchor links
+    
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener("click", function(e) {
             e.preventDefault();
@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    // Search functionality feedback
+    
     const searchForm = document.querySelector("form[action*='blog']");
     if (searchForm) {
         searchForm.addEventListener("submit", function(event) {
@@ -26,3 +26,5 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 });
+
+

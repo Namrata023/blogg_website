@@ -14,12 +14,15 @@ from django.http import HttpResponseForbidden
 
 def home(request):
     articles = Article.objects.all()
-    return render(request,'base.html' , {'articles':articles})
+    categories = Category.objects.all()
+    return render(request,'base.html' , {'articles':articles, 'categories': categories,})
 
 
 def blog(request):
     articles = Article.objects.all()  
-    return render(request, 'blog.html', {'articles': articles})
+    categories = Category.objects.all()
+    return render(request,'blog.html' , {'articles':articles, 'categories': categories,})
+
 
 def about(request):
     return render(request, 'about.html')
@@ -193,6 +196,8 @@ def faq_list(request):
 
 @login_required
 def feedback_create(request):
+    form = FeedbackForm()
+    
     if request.method == 'POST':
         form = FeedbackForm(request.POST)
         if form.is_valid():
@@ -207,11 +212,17 @@ def feedback_create(request):
     return render(request, 'feedback_create.html', {'form': form})
 
 
-
 def search(request):
-    query = request.GET.get('q')
+    query = request.GET.get('q', '').strip()  
+    category_id = request.GET.get('category', '')  
+
+    articles = Article.objects.all()  
+
     if query:
-        articles = Article.objects.filter(title__icontains=query)
-    else:
-        articles = Article.objects.all()
-    return render(request, 'search_results.html', {'articles': articles})
+        articles = articles.filter(title__icontains=query)
+    if category_id:
+        articles = articles.filter(category_id=category_id)
+
+    categories = Category.objects.all()  
+
+    return render(request, 'search_result.html', {'articles': articles, 'categories': categories})

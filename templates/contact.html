@@ -13,33 +13,27 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card shadow-lg border-0 p-4 rounded-4 bg-light">
-                <h4 class="fw-bold text-dark">💬 Send Us a Message</h4>
+                <h4 class="fw-bold text-dark">💬 Send Us Feedback</h4> <br><br>
+                
                 <form method="post" action="{% url 'feedback_create' %}">
                     {% csrf_token %}
+                    
                     {% if request.user.is_authenticated %}
-                    <div class="mb-3">
-                        <label for="name" class="form-label fw-semibold">Name:</label>
-                        <input type="text" class="form-control rounded-3" id="name" name="name" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label fw-semibold">Email:</label>
-                        <input type="email" class="form-control rounded-3" id="email" name="email" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="message" class="form-label fw-semibold">Message:</label>
-                        <textarea class="form-control rounded-3" id="message" name="message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary w-100 fw-semibold">📨 Send Message</button>
+    
+                    <button type="submit" class="btn btn-primary w-100 fw-semibold">📨 Send Feedback</button>
+                    
                     {% else %}
-                        <p class="text-center text-danger fw-semibold">Please log in to send a message.</p>
+                        <p class="text-center text-danger fw-semibold">Please log in to send feedback.</p>
                     {% endif %}
                 </form>
             </div>
         </div>
     </div>
+    
 
     
-    <div class="row justify-content-center my-5">
+    
+    <div class="row justify-content-center my-5 py-5">
         <div class="col-md-8">
             <div class="card shadow-lg border-0 p-4 rounded-4 bg-light">
                 <h3 class="fw-bold text-dark text-center">❓ Frequently Asked Questions</h3>
@@ -58,13 +52,17 @@
                         </div>
                     </div>
                     {% empty %}
-                    <p class="text-center text-muted">No FAQs available at the moment.</p>
+                    <p class="text-center text-muted">What is Blogger’s Haven?<br>
+                        Blogger’s Haven is a platform where users can create, manage, and engage with articles on various topics.</p>
                     {% endfor %}
+                    <div class="text-center">
+                        <a href="{% url 'faq_list' %}" class="btn btn-outline-primary">View More FAQs</a>
+                    
                 </div>
             </div>
         </div>
     </div>
-
+</div>
     
     <div class="row justify-content-center my-5">
         <div class="col-md-8 text-center">

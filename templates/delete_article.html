@@ -6,10 +6,10 @@
 <div class="container mt-5 pt-5">
   <div class="row justify-content-center">
     <div class="col-md-8">
-      <div class="card shadow border-0 p-4 rounded">
+      <div class="card shadow border-0 p-4 rounded"><br><br>
         <h1 class="text-center text-danger fw-bold mb-4">Confirm Deletion</h1>
         <p class="text-center lead">Are you sure you want to delete the article:</p>
-        <h3 class="text-center fw-bold mb-3">{{ article.title }}</h3>
+        <h3 class="text-center fw-bold mb-3">{{ article.title }}</h3><br><br><br><br><br>
         <p class="text-center text-muted mb-4">Once deleted, this action cannot be undone.</p>
         <div class="text-center">
          
@@ -25,8 +25,9 @@
             {% csrf_token %}
             <button type="submit" name="cancel_delete" class="btn btn-secondary btn-lg">
               Cancel
-            </button>
+            </button><br>
           </form>
+          <br><br>
         </div>
       </div>
     </div>

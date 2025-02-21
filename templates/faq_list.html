@@ -3,13 +3,40 @@
 {% block title %}FAQ - Blogger's Haven{% endblock %}
 
 {% block content %}
-    <div class="container">
-        <h1>Frequently Asked Questions</h1>
-        {% for faq in faqs %}
-            <div class="faq-item">
-                <h4>{{ faq.question }}</h4>
-                <p>{{ faq.answer }}</p>
+<div class="container mt-5 pt-5">
+    <h2 class="text-center fw-bold text-primary mb-4">❓ Frequently Asked <span class="text-warning">Questions</span></h2>
+    <p class="text-center text-muted lead">
+        Find answers to common questions about Blogger’s Haven.
+    </p>
+<br>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0 p-4 rounded-4 bg-light">
+                <div class="accordion" id="faqAccordion">
+                    {% for faq in faqs %}
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading{{ forloop.counter }}">
+                            <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ forloop.counter }}" aria-expanded="false">
+                                {{ faq.question }}
+                            </button>
+                        </h2>
+                        <div id="collapse{{ forloop.counter }}" class="accordion-collapse collapse" aria-labelledby="heading{{ forloop.counter }}" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted">
+                                {{ faq.answer }}
+                            </div>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <p class="text-center text-muted">No FAQs available at the moment.</p>
+                    {% endfor %}
+                </div>
             </div>
-        {% endfor %}
+        </div>
     </div>
+
+    <div class="text-center mt-4">
+        <p class="text-muted">Still have questions?</p>
+        <a href="{% url 'feedback_create' %}" class="btn btn-primary fw-semibold">📩 Contact Us</a>
+    </div>
+</div>
 {% endblock %}

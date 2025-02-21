@@ -34,35 +34,19 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="{% url 'home' %}" style="font-size: 0.9rem; padding: 8px 15px; font-family: 'Roboto', sans-serif;">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="{% url 'blog' %}" style="font-size: 0.9rem; padding: 8px 15px; font-family: 'Roboto', sans-serif;">Blogs</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="{% url 'about' %}" style="font-size: 0.9rem; padding: 8px 15px; font-family: 'Roboto', sans-serif;">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="{% url 'contact' %}" style="font-size: 0.9rem; padding: 8px 15px; font-family: 'Roboto', sans-serif;">Contact</a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link text-dark" href="{% url 'home' %}">Home</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark" href="{% url 'blog' %}">Blogs</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark" href="{% url 'about' %}">About</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark" href="{% url 'contact' %}">Contact</a></li>
                     {% if user.is_authenticated %}
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="{% url 'logout_view' %}" style="font-size: 0.9rem; padding: 8px 15px; font-family: 'Roboto', sans-serif;">Logout</a>
-                        </li>
+                        <li class="nav-item"><a class="nav-link text-dark" href="{% url 'logout_view' %}">Logout</a></li>
                     {% else %}
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="{% url 'login_view' %}" style="font-size: 0.9rem; padding: 8px 15px; font-family: 'Roboto', sans-serif;">Login</a>
-                        </li>
+                        <li class="nav-item"><a class="nav-link text-dark" href="{% url 'login_view' %}">Login</a></li>
                     {% endif %}
                 </ul>
             </div>
         </div>
     </nav>
-    
-    
-    
-    
 
 {% if request.resolver_match.url_name == 'home'  %}
     <section class="bg-light py-5 mt-5">
@@ -74,21 +58,25 @@
     </section>
 {% endif %}
 
-{% if request.resolver_match.url_name == 'blog' or request.resolver_match.url_name == 'home' %}
+
     
-    <div class="container mt-5 pt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <form method="GET" action="{% url 'blog' %}">
-                    <div class="input-group">
-                        <input type="text" class="form-control" name="q" placeholder="Search for articles..." aria-label="Search">
-                        <button class="btn btn-primary" type="submit">Search</button>
-                    </div>
-                </form>
-            </div>
+ {% if request.resolver_match.url_name == 'blog' or request.resolver_match.url_name == 'home' %}
+<div class="container mt-5 py-5">
+    <form method="GET" action="{% url 'search' %}" class="d-flex justify-content-center mb-4">
+        <div class="input-group w-75">
+            <select class="form-control" name="category" aria-label="Select Category">
+                <option value="">Search articles by categories....</option>
+                {% for category in categories %}
+                    <option value="{{ category.id }}" {% if category.id == request.GET.category %}selected{% endif %}>{{ category.name }}</option>
+                {% endfor %}
+            </select>
+            
+            <button class="btn btn-primary" type="submit">Search</button>
         </div>
-    </div>
-{% endif %}
+    </form>
+</div>
+{% endif %} 
+
 
     
     <div class="container mt-5">
@@ -103,12 +91,17 @@
                         <div class="card-body">
                             <h5 class="card-title fw-bold text-dark">{{ article.title }}</h5>
                             <p>Author:{{ article.author }}</p>
+                            <p>Category:{{ article.category }}</p>
                             <p>Published:{{ article.created_at|date:"F d, Y" }}</p>
                             <p class="card-text text-muted">{{ article.excerpt }}</p>
                             <a href="{% url 'article_detail' article.id article.slug %}" class="btn btn-primary w-100 fw-semibold">Read More</a>
                         </div>
                     </div>
                 </div>
+                {% empty %}
+      <div class="col-12">
+        <p class="text-center text-muted">No articles available at the moment.</p>
+      </div>
             {% endfor %}
         </div>
         {% endblock content %}
