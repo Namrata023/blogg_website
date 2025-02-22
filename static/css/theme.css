@@ -1,4 +1,3 @@
-
 :root {
     --primary-color: #6C5B7B; 
     --secondary-color: #F8BBD0; 
@@ -9,7 +8,6 @@
     --button-hover: #B39DDB; 
 }
 
-
 body {
     background-color: var(--background-color);
     font-family: 'Montserrat', sans-serif;
@@ -17,13 +15,11 @@ body {
     line-height: 1.6;
 }
 
-
 .navbar-light {
     background-color: var(--primary-color); 
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     padding: 10px 0;
 }
-
 
 .navbar-light .navbar-brand {
     font-family: 'Playfair Display', serif; 
@@ -39,7 +35,6 @@ body {
     text-decoration: none;
 }
 
-
 .navbar-light .navbar-nav .nav-link {
     color: white;
     font-family: 'Montserrat', sans-serif;
@@ -53,16 +48,14 @@ body {
     color: var(--accent-color); 
 }
 
-/* Active Link */
+
 .navbar-light .navbar-nav .nav-link.active {
     color: var(--accent-color); 
 }
 
-
 .navbar-toggler {
     border-color: var(--accent-color);
 }
-
 
 .bg-light {
     background: linear-gradient(135deg, #F8BBD0 30%, #F7F7F7 70%);
@@ -99,7 +92,6 @@ body {
     background-color: var(--button-hover);
 }
 
-
 .btn-outline-primary {
     border: 2px solid var(--primary-color);
     color: var(--primary-color);
@@ -115,7 +107,6 @@ body {
     color: white;
     border: 2px solid var(--primary-color);
 }
-
 
 .card {
     border: none;
@@ -166,7 +157,6 @@ body {
     background-color: var(--button-hover);
 }
 
-
 footer {
     background-color: var(--primary-color);
     color: white;
@@ -187,6 +177,52 @@ footer a:hover {
 }
 
 
+@media (max-width: 768px) {
+    .navbar .navbar-nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar-toggler {
+        margin-left: auto;
+    }
+
+    .navbar-brand {
+        font-size: 1.3rem;
+    }
+
+    .container h1 {
+        font-size: 2rem;
+    }
+
+    .card-body {
+        padding: 1rem;
+    }
+
+    .card-title {
+        font-size: 1.25rem;
+    }
+
+    .card-text {
+        font-size: 1rem;
+    }
+
+    .input-group {
+        width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .input-group {
+        flex-direction: column;
+    }
+
+    .input-group select,
+    .input-group button {
+        width: 100%;
+    }
+}
+
 @media (max-width: 767px) {
     .navbar-nav {
         text-align: center;
@@ -204,5 +240,3 @@ footer a:hover {
         font-size: 1rem;
     }
 }
-
-
